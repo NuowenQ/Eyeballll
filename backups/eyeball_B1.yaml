@@ -9,7 +9,7 @@
 #
 # ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue. 
 
-# A (updated for 3pm slot)
+# B1 (Updated for 3pm slot)
 map:
   - name: start
     x: 0.0
@@ -17,31 +17,31 @@ map:
     yaw: 0.0
   - name: gate_start
     x: 0.0
-    y: -1.4
+    y: 0.0
     z: -1.0
     yaw: 0.0
   - name: gate # not used.
-    x: 2.2
-    y: -1.4
+    x: 2.8
+    y: 0
     yaw: 0.0
   - name: gate_end
-    x: 3.2
-    y: -1.4
+    x: 4.3
+    y: 0.0
     yaw: 0.0
   - name: gate_back # used for return home
-    x: 6.5
-    y: -1.4
+    x: 5.6
+    y: 0.0
     z: -1.0
     yaw: 180.0
   - name: slalom_start
-    x: 3.2
-    y: 2.80
+    x: 4.3
+    y: 2.8
     # slalom_stupid computes its per-pole depths relative to this z, so keep
     # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
     z: -0.8
     yaw: 0.0
   - name: slalom
-    x: 6.8
+    x: 5.6
     y: 2.80
     z: -1.30
     yaw: 0.0
@@ -49,28 +49,28 @@ map:
   # z (up-positive, so -0.5 = 0.5 m deep) — the poles may not be vertically
   # aligned. The tree passes 0.7 m right (blood) or left (fire) of each.
   - name: slalom_pole_0
-    x: 6.8
-    y: 2.70
+    x: 5.6
+    y: 2.80
     z: -1.3
   - name: slalom_pole_1
-    x: 9.55
-    y: 1.60
+    x: 7.6
+    y: 3.1
     z: -1.3
   - name: slalom_pole_2
-    x: 11.2
-    y: 2.50
+    x: 9.6
+    y: 3.75
     z: -1.3
   - name: slalom_end # assume right side.
-    x: 12.7
-    y: 2.50
+    x: 11.1
+    y: 3.75
     yaw: 0.0
   - name: bin
-    x: 18.0
-    y: -2.8
+    x: 15
+    y: 5.6
     yaw: 0.0
   - name: bin_end
-    x: 18.0
-    y: -2.8
+    x: 15
+    y: 5.6
     yaw: 0.0
   - name: torpedo_start
     x: 14.0
