@@ -1,91 +1,103 @@
-# A
+# rs26 eyeball map — authored in the world ENU frame (anchored at vehicle init):
+#   +x  = East  = vehicle-forward-at-init
+#   +y  = North = vehicle-left-at-init
+#   +z  = Up    (depths are negative; usually overridden by goto_depth anyway)
+#   yaw = degrees, anticlockwise from +x/East (0 = facing forward-at-init)
+#
+# Legs are executed RELATIVELY (end - start), re-referenced to zero_yaw before
+# each leg; authored yaws only matter as diffs against the leg's start waypoint.
+#
+# ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue.
+
+# C1 (updated for 3pm slot)
 map:
   - name: start
-    x: 0.18
-    y: -1.88
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/origin"
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
   - name: gate_start
-    x: 0.18
-    y: -1.88
-    yaw: 14.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/gate/start"
-  - name: gate
-    x: 2.9
-    y: -1.2
-    yaw: 14.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/gate"
+    x: 0.0
+    y: -1.60
+    z: -1.0
+    yaw: 0.0
+  - name: gate # not used.
+    x: 2.8
+    y: -1.6
+    yaw: 0.0
   - name: gate_end
-    x: 4.84
-    y: -0.72
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/gate/end"
+    x: 4.3
+    y: -1.60
+    yaw: 0.0
+  - name: gate_back # used for return home
+    x: 5.0
+    y: -1.60
+    z: -1.0
+    yaw: 180.0
+  - name: slalom_start # quite yawed 10 degrees slalom poles
+    x: 4.3
+    y: -1.60
+    # slalom_stupid computes its per-pole depths relative to this z, so keep
+    # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
+    z: -0.8
+    yaw: 0.0
   - name: slalom
-    x: 7.98
-    y: 0.2
-  - name: slalom_start
-    x: 4.4
-    y: 0.1
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/slalom/start"
-  - name: slalom_end
-    x: 11.4
-    y: 0.1
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/slalom/end"
+    x: 5.6
+    y: -1.60
+    z: -1.3
+    yaw: 0.0
+  # Slalom poles for the stupid slalom tree, one per layer. Each has its OWN
+  # z (up-positive, so -0.5 = 0.5 m deep) — the poles may not be vertically
+  # aligned. The tree passes 0.7 m right (blood) or left (fire) of each.
+  - name: slalom_pole_0
+    x: 5.6
+    y: -1.60
+    z: -1.3
+  - name: slalom_pole_1
+    x: 7.6
+    y: -2.70
+    z: -1.3
+  - name: slalom_pole_2
+    x: 9.6
+    y: -1.60
+    z: -1.3
+  - name: slalom_end # assume right side.
+    x: 11.1
+    y: -1.60
+    yaw: 0.0
   - name: bin
-    x: 14.56
-    y: -5.65
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/bin"
+    x: 15.5
+    y: -5.6
+    yaw: 0.0
+  - name: bin_end
+    x: 15.5
+    y: -5.6
+    yaw: 0.0
   - name: torpedo_start
-    x: 7.4
-    y: -12.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/torpedo/start"
+    x: 11.5
+    y: 3.9
   - name: torpedo
-    x: 11.48
-    y: -14.8
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/torpedo"
+    x: 14.0
+    y: 3.9
   - name: torpedo_with_yaw
-    x: 11.55
-    y: -14.7
-    yaw: -59.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/torpedo_with_yaw"
+    x: 12.5
+    y: 3.9
+    yaw: 0.0
   - name: torpedo_post
-    x: 11.2
-    y: -12.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/torpedo/post"
+    x: 11.5
+    y: 3.9
   - name: octagon_start
     x: 17.5
-    y: -15.8 #-1.7
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/octagon_start"
+    y: -2.0
   - name: octagon
-    x: 18.0
-    y: -15.8 #-1.7
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/octagon"
+    x: 17.5
+    y: -2.0
   - name: table
-    x: 18.0
-    y: -15.8 #-1.7
-    # yaw: 90.0
-    yaw: 270.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/octagon"
+    x: 17.5
+    y: -2.0
+    yaw: -90.0
   - name: acoustic_start
-    x: 14.0
-    y: -13.25
-    yaw: -80.0
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/acoustic_start"
+    x: 13.5
+    y: 3.0
   - name: acoustic_end
-    x: 14.0
-    y: -13.25
-    parent_frame_id: "map_ned"
-    child_frame_id: "map_ned/acoustic_start"
+    x: 13.5
+    y: 3.0
