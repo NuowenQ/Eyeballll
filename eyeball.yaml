@@ -9,7 +9,7 @@
 #
 # ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue. 
 
-# A (updated for full course 1100am)
+# A (updated for full course 1100am, try test push)
 map:
   - name: start
     x: 0.0
