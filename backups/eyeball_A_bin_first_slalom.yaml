@@ -63,6 +63,10 @@ map:
     y: 2.40
     z: -1.3
     yaw: 180
+  - name: slalom_start_waypoint
+    x: 14.0
+    y: -2.8
+    yaw: 180.0
   - name: slalom_start # assume right side.
     x: 14.0
     y: 2.40
@@ -86,8 +90,8 @@ map:
     y: 3.9
     yaw: 0.0
   - name: torpedo_post
-    x: 14.4
-    y: 4.1
+    x: 13.5
+    y: 3.9
   - name: octagon_start
     x: 18.0
     y: 1.0
