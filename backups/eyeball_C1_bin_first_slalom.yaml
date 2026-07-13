@@ -9,7 +9,7 @@
 #
 # ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue.
 
-# C1 (updated for 3pm slot)
+# C1 (updated for 1400 slot)
 map:
   - name: start
     x: 0.0
@@ -59,16 +59,16 @@ map:
     z: -1.3
     yaw: 180.0
   - name: slalom_pole_0
-    x: 9.6
+    x: 10.0
     y: -1.60
     z: -1.3
     yaw: 180.0
   - name: slalom_start # assume right side.
-    x: 12.4
+    x: 12.8
     y: -1.60
     yaw: 180.0
   - name: slalom_start_waypoint
-    x: 12.4
+    x: 12.8
     y: -1.60
     yaw: 180.0
   - name: bin
