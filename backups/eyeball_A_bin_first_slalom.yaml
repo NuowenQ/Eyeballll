@@ -35,7 +35,7 @@ map:
     yaw: 180.0
   - name: slalom_end
     x: 5.5
-    y: 1.80
+    y: 1.60
     yaw: 180
     # slalom_stupid computes its per-pole depths relative to this z, so keep
     # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
@@ -50,12 +50,12 @@ map:
   # aligned. The tree passes 0.7 m right (blood) or left (fire) of each.
   - name: slalom_pole_2
     x: 7.0
-    y: 1.80
+    y: 1.60
     z: -1.3
     yaw: 180
   - name: slalom_pole_1
-    x: 8.7
-    y: 1.70
+    x: 8.8
+    y: 1.50
     z: -1.3
     yaw: 180
   - name: slalom_pole_0
@@ -85,10 +85,10 @@ map:
   - name: torpedo
     x: 15.0
     y: 4.6
-  - name: torpedo_with_yaw
-    x: 12.5
-    y: 3.9
-    yaw: 0.0
+  # - name: torpedo_with_yaw
+  #   x: 12.5
+  #   y: 3.9
+  #   yaw: 0.0
   - name: torpedo_post
     x: 13.5
     y: 3.9
