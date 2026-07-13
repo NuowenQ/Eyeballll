@@ -21,11 +21,11 @@ map:
     z: -1.0
     yaw: 0.0
   - name: gate # not used.
-    x: 2.2
+    x: 2.5
     y: -1.4
     yaw: 0.0
   - name: gate_end
-    x: 3.7
+    x: 4.0
     y: -1.4
     yaw: 0.0
   - name: gate_back # used for return home
@@ -35,7 +35,7 @@ map:
     yaw: 180.0
   - name: slalom_end
     x: 5.5
-    y: 2.35
+    y: 1.80
     yaw: 180
     # slalom_stupid computes its per-pole depths relative to this z, so keep
     # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
@@ -50,22 +50,22 @@ map:
   # aligned. The tree passes 0.7 m right (blood) or left (fire) of each.
   - name: slalom_pole_2
     x: 7.0
-    y: 2.35
+    y: 1.80
     z: -1.3
     yaw: 180
   - name: slalom_pole_1
     x: 8.7
-    y: 1.60
+    y: 2.00
     z: -1.3
     yaw: 180
   - name: slalom_pole_0
     x: 11.2
-    y: 2.50
+    y: 2.60
     z: -1.3
     yaw: 180
   - name: slalom_start # assume right side.
     x: 12.5
-    y: 2.50
+    y: 2.60
     yaw: 180.0
   - name: bin
     x: 17.3
