@@ -22,7 +22,7 @@ map:
     yaw: 0.0
   - name: gate # not used.
     x: 2.8
-    y: 0
+    y: 0.0
     yaw: 0.0
   - name: gate_end
     x: 4.3
