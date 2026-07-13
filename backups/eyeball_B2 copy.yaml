@@ -68,12 +68,12 @@ map:
     y: 0.5
     yaw: 180
   - name: bin
-    x: 14.0
-    y: 3.5
+    x: 12.0
+    y: 2.7
     yaw: 0.0
   - name: bin_end
     x: 14.5
-    y: 3.5
+    y: -1.5
     yaw: 0.0
   - name: torpedo_start
     x: 11.5

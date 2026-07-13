@@ -34,7 +34,7 @@ map:
     z: -1.0
     yaw: 180.0
   - name: slalom_start # quite yawed 10 degrees slalom poles
-    x: 4.3
+    x: 3.8
     y: -1.60
     # slalom_stupid computes its per-pole depths relative to this z, so keep
     # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
