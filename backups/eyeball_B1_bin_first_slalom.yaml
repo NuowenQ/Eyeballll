@@ -22,15 +22,15 @@ map:
     yaw: 0.0
   - name: gate # not used.
     x: 2.8
-    y: 0.0
+    y: 0.15
     yaw: 0.0
   - name: gate_end
     x: 4.3
-    y: 0.0
+    y: 0.15
     yaw: 0.0
   - name: gate_back # used for return home
     x: 5.6
-    y: 0.0
+    y: 0.15
     z: -1.0
     yaw: 180.0
   - name: slalom_end
@@ -72,19 +72,19 @@ map:
     x: 14.6
     y: 5.6
     yaw: 0.0
-  - name: torpedo_start
-    x: 14.0
-    y: 3.9
-  - name: torpedo
-    x: 15.0
-    y: 4.6
-  - name: torpedo_with_yaw
-    x: 12.5
-    y: 3.9
-    yaw: 0.0
-  - name: torpedo_post
-    x: 14.0
-    y: 3.9
+  # - name: torpedo_start
+  #   x: 14.0
+  #   y: 3.9
+  # - name: torpedo
+  #   x: 15.0
+  #   y: 4.6
+  # - name: torpedo_with_yaw
+  #   x: 12.5
+  #   y: 3.9
+  #   yaw: 0.0
+  # - name: torpedo_post
+  #   x: 14.0
+  #   y: 3.9
   - name: octagon_start
     x: 18.0
     y: 1.0

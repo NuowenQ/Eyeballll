@@ -7,51 +7,97 @@
 # Legs are executed RELATIVELY (end - start), re-referenced to zero_yaw before
 # each leg; authored yaws only matter as diffs against the leg's start waypoint.
 #
-# ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue.
+# ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue. 
 
-# C2 (Updated for 8am+ slot)
+# B1 (Updated for 10am slot)
 map:
   - name: start
     x: 0.0
     y: 0.0
     yaw: 0.0
+  - name: gate_start
+    x: 0.0
+    y: 0.0
+    z: -1.0
+    yaw: 0.0
+  - name: gate # not used.
+    x: 2.8
+    y: 0.15
+    yaw: 0.0
+  - name: gate_end
+    x: 4.3
+    y: 0.15
+    yaw: 0.0
+  - name: gate_back # used for return home
+    x: 5.6
+    y: 0.15
+    z: -1.0
+    yaw: 180.0
+  - name: slalom_end
+    x: 4.3
+    y: 2.60
+    # slalom_stupid computes its per-pole depths relative to this z, so keep
+    # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
+    z: -0.8
+    yaw: 180.0
+  # - name: slalom
+  #   x: 9.6
+  #   y: 3.75
+  #   z: -1.3
+  #   yaw: 180.0
+  - name: slalom_pole_2
+    x: 5.60
+    y: 2.60
+    z: -1.3
+    yaw: 180.0
+  - name: slalom_pole_1
+    x: 7.8
+    y: 3.2
+    z: -1.3
+    yaw: 180.0
+  - name: slalom_pole_0
+    x: 10.0
+    y: 3.80
+    z: -1.3
+    yaw: 180.0
+  - name: slalom_start # assume right side.
+    x: 13.0
+    y: 3.80
+    yaw: 180.0
   - name: bin
-    x: 3.4
-    y: 2.5
+    x: 14.6
+    y: 5.6
     yaw: 0.0
   - name: bin_end
-    x: 3.4
-    y: 2.5
+    x: 14.6
+    y: 5.6
     yaw: 0.0
-  - name: torpedo_start
-    x: 4.8
-    y: -2.6
-    yaw: -90.0
-  - name: torpedo
-    x: 4.8
-    y: -4.6
-    yaw: -90.0
+  # - name: torpedo_start
+  #   x: 14.0
+  #   y: 3.9
+  # - name: torpedo
+  #   x: 15.0
+  #   y: 4.6
   # - name: torpedo_with_yaw
-  #   x: 4.6
-  #   y: -4.6
-  #   yaw: -90.0
-  - name: torpedo_post
-    x: 4.8
-    y: -3.8
-    yaw: -90.0
+  #   x: 12.5
+  #   y: 3.9
+  #   yaw: 0.0
+  # - name: torpedo_post
+  #   x: 14.0
+  #   y: 3.9
   - name: octagon_start
-    x: 1.8
-    y: -1.0
+    x: 18.0
+    y: 1.0
   - name: octagon
-    x: 1.8
-    y: -1.0
+    x: 18.0
+    y: 1.0
   - name: table
-    x: 1.8
-    y: -1.0
+    x: 18.0
+    y: 1.0
     yaw: 90.0
   - name: acoustic_start
-    x: 3.2
-    y: -2.8
+    x: 16.5
+    y: 2.8
   - name: acoustic_end
-    x: 3.2
-    y: -2.8
+    x: 16.5
+    y: 2.8
