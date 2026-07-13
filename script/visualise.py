@@ -97,8 +97,13 @@ def create_octagon_obstacle(coordinates, octagon_radius=1.35):
     }
 
 
-def create_slalom_gates(coordinates, gate_spacing=2.0, gate_width=3.0,
-                        layer_2_offset=0.0, layer_3_offset=0.0):
+def create_slalom_gates(
+    coordinates,
+    gate_spacing=2.0,
+    gate_width=3.0,
+    layer_2_offset=0.0,
+    layer_3_offset=0.0,
+):
     """Create slalom gate coordinates for the "slalom" point."""
     slalom_start = None
     for coord in coordinates:
@@ -128,13 +133,15 @@ def create_slalom_gates(coordinates, gate_spacing=2.0, gate_width=3.0,
         right_north = gate_center_north - half_width * math.cos(perp_yaw_rad)
         right_east = gate_center_east - half_width * math.sin(perp_yaw_rad)
 
-        gates.append({
-            "name": f"slalom_gate_{i + 1}",
-            "center": (gate_center_north, gate_center_east),
-            "left_end": (left_north, left_east),
-            "right_end": (right_north, right_east),
-            "gate_number": i + 1,
-        })
+        gates.append(
+            {
+                "name": f"slalom_gate_{i + 1}",
+                "center": (gate_center_north, gate_center_east),
+                "left_end": (left_north, left_east),
+                "right_end": (right_north, right_east),
+                "gate_number": i + 1,
+            }
+        )
 
     for key in ("center", "left_end", "right_end"):
         gates[1][key] = (gates[1][key][0], gates[1][key][1] + layer_2_offset)
@@ -143,7 +150,9 @@ def create_slalom_gates(coordinates, gate_spacing=2.0, gate_width=3.0,
     return gates
 
 
-def create_gate_end_obstacle(coordinates, obstacle_setback=2.0, obstacle_half_width=1.5):
+def create_gate_end_obstacle(
+    coordinates, obstacle_setback=2.0, obstacle_half_width=1.5
+):
     """Create obstacle coordinate for the "gate" point."""
     gate_end = None
     for coord in coordinates:
@@ -176,8 +185,9 @@ def create_gate_end_obstacle(coordinates, obstacle_setback=2.0, obstacle_half_wi
     }
 
 
-def layout_labels_margin(plot_x, plot_y, names, xlim, ylim,
-                         left_frac=0.16, right_frac=0.16, band_pad=1.0):
+def layout_labels_margin(
+    plot_x, plot_y, names, xlim, ylim, left_frac=0.16, right_frac=0.16, band_pad=1.0
+):
     """Lay labels out in the empty left/right margins with leader lines.
 
     Points are split into a left and a right group (by their East position),
@@ -226,11 +236,19 @@ def layout_labels_margin(plot_x, plot_y, names, xlim, ylim,
     return result
 
 
-def plot_ned_coordinates_with_obstacles(coordinates, figsize=(12, 8), save_path=None,
-                                        obstacle_setback=2.0, obstacle_half_width=1.5,
-                                        gate_spacing=2.0, gate_width=3.0, octagon_radius=1.35,
-                                        slalom_layer_2_offset=0.0, slalom_layer_3_offset=0.0,
-                                        show=True):
+def plot_ned_coordinates_with_obstacles(
+    coordinates,
+    figsize=(12, 8),
+    save_path=None,
+    obstacle_setback=2.0,
+    obstacle_half_width=1.5,
+    gate_spacing=2.0,
+    gate_width=3.0,
+    octagon_radius=1.35,
+    slalom_layer_2_offset=0.0,
+    slalom_layer_3_offset=0.0,
+    show=True,
+):
     """Create a 2D visualization of coordinates with gate obstacles and octagon."""
     fig, ax = plt.subplots(figsize=figsize)
 
@@ -247,12 +265,21 @@ def plot_ned_coordinates_with_obstacles(coordinates, figsize=(12, 8), save_path=
     x_coords = np.array(x_coords)
     y_coords = np.array(y_coords)
 
-    # Display: X-axis=East(Y), Y-axis=North(X)
+    # FLU display: horizontal axis = Left (y), vertical axis = Forward (x).
+    # The axis is reversed below so +y (Left) renders to the left of screen.
     plot_x = y_coords
     plot_y = x_coords
 
-    ax.scatter(plot_x, plot_y, c="red", s=50, alpha=0.7,
-               edgecolors="darkred", linewidth=2, zorder=5)
+    ax.scatter(
+        plot_x,
+        plot_y,
+        c="red",
+        s=50,
+        alpha=0.7,
+        edgecolors="darkred",
+        linewidth=2,
+        zorder=5,
+    )
 
     # Move the labels out into the empty left/right margins and connect each
     # one back to its coordinate with a thin leader line, so tightly clustered
@@ -260,23 +287,40 @@ def plot_ned_coordinates_with_obstacles(coordinates, figsize=(12, 8), save_path=
     label_positions = layout_labels_margin(plot_x, plot_y, names, XLIM, YLIM)
     for i, name in enumerate(names):
         lx, ly, ha = label_positions[i]
-        ax.annotate(name, xy=(plot_x[i], plot_y[i]), xytext=(lx, ly),
-                    textcoords="data",
-                    fontsize=6, ha=ha, va="center",
-                    bbox=dict(boxstyle="round,pad=0.3", facecolor="yellow", alpha=0.7),
-                    arrowprops=dict(arrowstyle="-", color="gray", linewidth=0.6,
-                                    alpha=0.7, shrinkA=2, shrinkB=2),
-                    zorder=9)
+        ax.annotate(
+            name,
+            xy=(plot_x[i], plot_y[i]),
+            xytext=(lx, ly),
+            textcoords="data",
+            fontsize=6,
+            ha=ha,
+            va="center",
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="yellow", alpha=0.7),
+            arrowprops=dict(
+                arrowstyle="-",
+                color="gray",
+                linewidth=0.6,
+                alpha=0.7,
+                shrinkA=2,
+                shrinkB=2,
+            ),
+            zorder=9,
+        )
 
     arrow_length = 1.0
     for i, yaw in enumerate(yaws):
         yaw_rad = math.radians(yaw)
         dx_ned = arrow_length * math.sin(yaw_rad)
         dy_ned = arrow_length * math.cos(yaw_rad)
-        arrow = FancyArrowPatch((plot_x[i], plot_y[i]),
-                                (plot_x[i] + dx_ned, plot_y[i] + dy_ned),
-                                arrowstyle="->", mutation_scale=20,
-                                color="blue", linewidth=2, zorder=4)
+        arrow = FancyArrowPatch(
+            (plot_x[i], plot_y[i]),
+            (plot_x[i] + dx_ned, plot_y[i] + dy_ned),
+            arrowstyle="->",
+            mutation_scale=20,
+            color="blue",
+            linewidth=2,
+            zorder=4,
+        )
         ax.add_patch(arrow)
 
     # Torpedo visualization line
@@ -297,48 +341,91 @@ def plot_ned_coordinates_with_obstacles(coordinates, figsize=(12, 8), save_path=
         end_north = torpedo_north + line_half_length * math.sin(torpedo_yaw_rad)
         end_east = torpedo_east - line_half_length * math.cos(torpedo_yaw_rad)
 
-        ax.plot([start_east, end_east], [start_north, end_north],
-                "orange", linewidth=4, alpha=0.9, solid_capstyle="round",
-                label="Torpedo (60cm)", zorder=8)
+        ax.plot(
+            [start_east, end_east],
+            [start_north, end_north],
+            "orange",
+            linewidth=4,
+            alpha=0.9,
+            solid_capstyle="round",
+            label="Torpedo (60cm)",
+            zorder=8,
+        )
 
     # Octagon obstacle
     octagon = create_octagon_obstacle(coordinates, octagon_radius)
     if octagon:
         plot_vertices = [(e, n) for n, e in octagon["vertices"]]
-        octagon_patch = Polygon(plot_vertices, closed=True,
-                                facecolor="purple", alpha=0.6,
-                                edgecolor="purple", linewidth=2,
-                                label="Octagon Obstacle", zorder=6)
+        octagon_patch = Polygon(
+            plot_vertices,
+            closed=True,
+            facecolor="purple",
+            alpha=0.6,
+            edgecolor="purple",
+            linewidth=2,
+            label="Octagon Obstacle",
+            zorder=6,
+        )
         ax.add_patch(octagon_patch)
 
     # Slalom gates
-    slalom_gates = create_slalom_gates(coordinates, gate_spacing, gate_width,
-                                       layer_2_offset=slalom_layer_2_offset,
-                                       layer_3_offset=slalom_layer_3_offset)
+    slalom_gates = create_slalom_gates(
+        coordinates,
+        gate_spacing,
+        gate_width,
+        layer_2_offset=slalom_layer_2_offset,
+        layer_3_offset=slalom_layer_3_offset,
+    )
     for gate in slalom_gates:
         center_north, center_east = gate["center"]
         left_north, left_east = gate["left_end"]
         right_north, right_east = gate["right_end"]
 
-        ax.plot(center_east, center_north, "ro", markersize=6, markeredgecolor="black",
-                label="Slalom Gates" if gate == slalom_gates[0] else "", zorder=7)
-        ax.plot([left_east, right_east], [left_north, right_north],
-                "wo", markersize=6, markeredgecolor="black", markeredgewidth=1, zorder=7)
+        ax.plot(
+            center_east,
+            center_north,
+            "ro",
+            markersize=6,
+            markeredgecolor="black",
+            label="Slalom Gates" if gate == slalom_gates[0] else "",
+            zorder=7,
+        )
+        ax.plot(
+            [left_east, right_east],
+            [left_north, right_north],
+            "wo",
+            markersize=6,
+            markeredgecolor="black",
+            markeredgewidth=1,
+            zorder=7,
+        )
 
     # Gate end obstacle
-    obstacle = create_gate_end_obstacle(coordinates, obstacle_setback, obstacle_half_width)
+    obstacle = create_gate_end_obstacle(
+        coordinates, obstacle_setback, obstacle_half_width
+    )
     if obstacle:
         start_north, start_east = obstacle["start"]
         end_north, end_east = obstacle["end"]
-        ax.plot([start_east, end_east], [start_north, end_north],
-                "r-", linewidth=8, alpha=0.8, solid_capstyle="round",
-                label="Gate End Obstacle", zorder=7)
+        ax.plot(
+            [start_east, end_east],
+            [start_north, end_north],
+            "r-",
+            linewidth=8,
+            alpha=0.8,
+            solid_capstyle="round",
+            label="Gate End Obstacle",
+            zorder=7,
+        )
 
-    ax.set_xlabel("East (Y) [m]", fontsize=12, fontweight="bold")
-    ax.set_ylabel("North (X) [m]", fontsize=12, fontweight="bold")
+    ax.set_xlabel("Left (Y) [m]", fontsize=12, fontweight="bold")
+    ax.set_ylabel("Forward (X) [m]", fontsize=12, fontweight="bold")
     ax.set_title(TITLE, fontsize=14, fontweight="bold")
 
-    ax.set_xlim(*XLIM)
+    # FLU convention: +y is Left, so it must run to the LEFT of the screen
+    # (Forward up). Reverse the horizontal axis to mirror the NED "East-right"
+    # layout into "Left-left" for every artist at once.
+    ax.set_xlim(XLIM[1], XLIM[0])
     ax.set_ylim(*YLIM)
 
     ax.grid(True, alpha=0.7, linestyle="-", linewidth=0.3 * 10, color="gray")
@@ -347,19 +434,27 @@ def plot_ned_coordinates_with_obstacles(coordinates, figsize=(12, 8), save_path=
     x_min, x_max = XLIM
     x_neg_count = int(np.ceil(abs(x_min) / grid_spacing))
     x_pos_count = int(np.ceil(abs(x_max) / grid_spacing))
-    x_ticks = np.concatenate([
-        np.arange(0, -x_neg_count * grid_spacing - grid_spacing / 2, -grid_spacing)[::-1],
-        np.arange(0, x_pos_count * grid_spacing + grid_spacing / 2, grid_spacing),
-    ])
+    x_ticks = np.concatenate(
+        [
+            np.arange(0, -x_neg_count * grid_spacing - grid_spacing / 2, -grid_spacing)[
+                ::-1
+            ],
+            np.arange(0, x_pos_count * grid_spacing + grid_spacing / 2, grid_spacing),
+        ]
+    )
     x_ticks = x_ticks[(x_ticks >= x_min) & (x_ticks <= x_max)]
 
     y_min, y_max = YLIM
     y_neg_count = int(np.ceil(abs(y_min) / grid_spacing))
     y_pos_count = int(np.ceil(abs(y_max) / grid_spacing))
-    y_ticks = np.concatenate([
-        np.arange(0, -y_neg_count * grid_spacing - grid_spacing / 2, -grid_spacing)[::-1],
-        np.arange(0, y_pos_count * grid_spacing + grid_spacing / 2, grid_spacing),
-    ])
+    y_ticks = np.concatenate(
+        [
+            np.arange(0, -y_neg_count * grid_spacing - grid_spacing / 2, -grid_spacing)[
+                ::-1
+            ],
+            np.arange(0, y_pos_count * grid_spacing + grid_spacing / 2, grid_spacing),
+        ]
+    )
     y_ticks = y_ticks[(y_ticks >= y_min) & (y_ticks <= y_max)]
 
     ax.set_xticks(x_ticks)
@@ -380,9 +475,9 @@ def plot_ned_coordinates_with_obstacles(coordinates, figsize=(12, 8), save_path=
     # Coordinate summary
     print("\nCoordinate Summary:")
     print("-" * 50)
-    print("Display: X-axis=East(Y), Y-axis=North(X)")
+    print("Display: X-axis=Left(Y), Y-axis=Forward(X)")
     for coord in coordinates:
-        print(f"{coord['name']}: N={coord['x']:.1f}, E={coord['y']:.1f}")
+        print(f"{coord['name']}: F={coord['x']:.1f}, L={coord['y']:.1f}")
 
 
 def parse_args(argv=None):
@@ -390,15 +485,21 @@ def parse_args(argv=None):
         description="Visualise an eyeball map YAML from the backups folder.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument("file", nargs="?",
-                        help="YAML file in the backups folder (e.g. eyeball_A.yaml, "
-                             ".yaml optional), or a path to any YAML file")
-    parser.add_argument("--list", action="store_true",
-                        help="list available backup files and exit")
-    parser.add_argument("--save", metavar="PATH", default=None,
-                        help="save the figure to this path")
-    parser.add_argument("--no-show", action="store_true",
-                        help="do not open an interactive window")
+    parser.add_argument(
+        "file",
+        nargs="?",
+        help="YAML file in the backups folder (e.g. eyeball_A.yaml, "
+        ".yaml optional), or a path to any YAML file",
+    )
+    parser.add_argument(
+        "--list", action="store_true", help="list available backup files and exit"
+    )
+    parser.add_argument(
+        "--save", metavar="PATH", default=None, help="save the figure to this path"
+    )
+    parser.add_argument(
+        "--no-show", action="store_true", help="do not open an interactive window"
+    )
     return parser.parse_args(argv)
 
 
