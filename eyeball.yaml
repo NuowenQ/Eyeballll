@@ -67,7 +67,7 @@ map:
   - name: slalom_start_waypoint
     x: 13.0
     y: 3.80
-    yaw: 180.0
+    yaw: 0.0
   - name: bin
     x: 14.6
     y: 5.9
