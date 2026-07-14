@@ -9,34 +9,34 @@
 #
 # ALL VALUES ARE PLACEHOLDERS carried over from rs24 — re-eyeball at the venue. 
 
-# A (updated for 4pm slot)
+# A (updated for semis)
 map:
   - name: start
     x: 0.0
-    y: -1.4
+    y: -0.3
     yaw: 0.0
   - name: gate_start
     x: 0.0
-    y: -1.4
+    y: -0.3
     z: -1.0
     yaw: 0.0
   - name: gate # not used.
     x: 2.8
-    y: -1.4
+    y: -0.3
     yaw: 0.0
   - name: gate_end
     x: 4.3
-    y: -1.4
+    y: -0.3
     yaw: 0.0
   - name: gate_back # used for return home
     x: 5.6
-    y: -1.4
+    y: -0.3
     z: -1.0
     yaw: 180.0
   - name: slalom_end
     x: 5.5
-    y: 1.60
-    yaw: 180
+    y: 1.80
+    yaw: 180.0
     # slalom_stupid computes its per-pole depths relative to this z, so keep
     # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
     z: -0.8
@@ -50,26 +50,26 @@ map:
   # aligned. The tree passes 0.7 m right (blood) or left (fire) of each.
   - name: slalom_pole_2
     x: 7.0
-    y: 1.60
+    y: 1.80
     z: -1.3
-    yaw: 180
+    yaw: 180.0
   - name: slalom_pole_1
     x: 8.8
-    y: 1.50
+    y: 0.8
     z: -1.3
-    yaw: 180
+    yaw: 180.0
   - name: slalom_pole_0
     x: 11.2
     y: 2.40
     z: -1.3
-    yaw: 180
+    yaw: 180.0
   - name: slalom_start_waypoint
     x: 14.0
     y: -2.8
     yaw: 0.0
   - name: slalom_start # assume right side.
     x: 14.0
-    y: 2.40
+    y: 1.80
     yaw: 180.0
   - name: bin
     x: 17.3
@@ -80,31 +80,33 @@ map:
     y: -2.8
     yaw: 0.0
   - name: torpedo_start
-    x: 13.0
-    y: 4.6
+    x: 12.8
+    y: 5.4
+    yaw: 20.0
   - name: torpedo
-    x: 15.0
-    y: 4.6
+    x: 14.3
+    y: 5.9
   # - name: torpedo_with_yaw
   #   x: 12.5
   #   y: 3.9
   #   yaw: 0.0
   - name: torpedo_post
-    x: 13.0
-    y: 4.6
+    x: 12.8
+    y: 5.4
+    yaw: 20.0
   - name: octagon_start
-    x: 18.0
-    y: 1.0
+    x: 17.8
+    y: 2.4
   - name: octagon
-    x: 18.0
-    y: 1.0
+    x: 17.8
+    y: 2.4
   - name: table
-    x: 18.0
-    y: 1.0
+    x: 17.8
+    y: 2.4
     yaw: 90.0
   - name: acoustic_start
-    x: 16.5
-    y: 2.8
+    x: 16.0
+    y: 4.2
   - name: acoustic_end
-    x: 16.5
-    y: 2.8
+    x: 16.0
+    y: 4.2
