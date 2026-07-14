@@ -80,8 +80,8 @@ map:
     y: -2.8
     yaw: 0.0
   - name: torpedo_start
-    x: 13.5
-    y: 3.9
+    x: 13.0
+    y: 4.6
   - name: torpedo
     x: 15.0
     y: 4.6
@@ -90,8 +90,8 @@ map:
   #   y: 3.9
   #   yaw: 0.0
   - name: torpedo_post
-    x: 13.5
-    y: 3.9
+    x: 13.0
+    y: 4.6
   - name: octagon_start
     x: 18.0
     y: 1.0
