@@ -64,12 +64,12 @@ map:
     z: -1.3
     yaw: 0.0
   - name: slalom_end # assume right side.
-    x: 14.0
+    x: 12.5
     y: 0.0
     yaw: 0.0
   - name: slalom_start_waypoint
-    x: 14.0
-    y: 0.0
+    x: 4.5
+    y: 0.1
     yaw: 0.0
   - name: bin
     x: 15.7
