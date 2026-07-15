@@ -13,11 +13,11 @@
 map:
   - name: start
     x: 0.0
-    y: 0.0
+    y: -2.1
     yaw: 0.0
   - name: gate_start
-    x: -0.5
-    y: 0.0
+    x: 0.0
+    y: -2.1
     z: -1.0
     yaw: 0.0
   - name: gate # not used.
