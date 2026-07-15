@@ -57,12 +57,16 @@ map:
     x: 14.0
     y: 0.5
     yaw: 180.0
+  - name: slalom_start_waypoint
+    x: 14.0
+    y: 0.5
+    yaw: 0.0
   - name: bin
-    x: 13.7
+    x: 13.6
     y: -5.0
     yaw: 0.0
   - name: bin_end
-    x: 13.7
+    x: 13.6
     y: -5.0
     yaw: 0.0
   - name: torpedo_start
