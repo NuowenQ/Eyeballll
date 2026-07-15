@@ -55,7 +55,8 @@ map:
   - name: slalom_start # assume right side.
     x: 12.0
     y: 1.0
-    yaw: 180
+    yaw: 180.0
+  
   - name: bin
     x: 13.5
     y: 4.0

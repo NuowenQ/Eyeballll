@@ -53,9 +53,13 @@ map:
     z: -1.3
     yaw: 180
   - name: slalom_start # assume right side.
-    x: 12.0
+    x: 12.5
     y: 1.0
-    yaw: 180
+    yaw: 180.0
+  - name: slalom_start_waypoint # assume right side.
+    x: 12.5
+    y: 1.0
+    yaw: 0.0
   - name: bin
     x: 13.5
     y: 4.0
