@@ -91,7 +91,7 @@ map:
   - name: table
     x: 17.5
     y: 0.3
-    yaw: -90.0
+    yaw: -93.0
   - name: acoustic_start
     x: 16.0
     y: 2.0
