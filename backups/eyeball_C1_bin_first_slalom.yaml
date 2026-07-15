@@ -13,29 +13,29 @@
 map:
   - name: start
     x: 0.0
-    y: -1.50
+    y: -0.5
     yaw: 0.0
   - name: gate_start
     x: 0.0
-    y: -1.50
+    y: -0.5
     z: -1.0
     yaw: 0.0
   - name: gate # not used.
     x: 2.8
-    y: -1.5
+    y: -0.5
     yaw: 0.0
   - name: gate_end
     x: 4.3
-    y: -1.50
+    y: -0.5
     yaw: 0.0
   - name: gate_back # used for return home
-    x: 5.5
-    y: -1.50
+    x: 5.6
+    y: -0.5
     z: -1.0
     yaw: 180.0
   - name: slalom_end # quite yawed 10 degrees slalom poles
-    x: 5.5
-    y: 0.1
+    x: 4.8
+    y: -0.1
     # slalom_stupid computes its per-pole depths relative to this z, so keep
     # it matched to move_to_slalom's goto_depth (z: -0.8 <-> goto_depth=0.8).
     z: -0.8
@@ -49,13 +49,13 @@ map:
   # z (up-positive, so -0.5 = 0.5 m deep) — the poles may not be vertically
   # aligned. The tree passes 0.7 m right (blood) or left (fire) of each.
   - name: slalom_pole_2
-    x: 7.0
-    y: 0.1
+    x: 6.3
+    y: -0.1
     z: -1.3
     yaw: 180.0
   - name: slalom_pole_1
-    x: 9.0
-    y: 1.2
+    x: 8.4
+    y: 0.8
     z: -1.3
     yaw: 180.0
   - name: slalom_pole_0
@@ -80,31 +80,48 @@ map:
     y: -5.3
     yaw: 0.0
   - name: torpedo_start
-    x: 11.5
-    y: 3.9
+    x: 16.8
+    y: 2.8
+    yaw: 120.0
   - name: torpedo
-    x: 14.0
-    y: 3.9
-  - name: torpedo_with_yaw
-    x: 12.5
-    y: 3.9
-    yaw: 0.0
+    x: 15.0
+    y: 3.4
+  # - name: torpedo_with_yaw
+  #   x: 12.5
+  #   y: 3.9
+  #   yaw: 0.0
   - name: torpedo_post
-    x: 11.5
-    y: 3.9
+    x: 16.8
+    y: 2.8
   - name: octagon_start
     x: 17.5
-    y: -2.0
+    y: -1.9
   - name: octagon
     x: 17.5
-    y: -2.0
+    y: -1.9
+  - name: octagon_repair
+    x: 17.5
+    y: -1.9
+    yaw: -135.0
+  - name: octagon_sos
+    x: 17.5
+    y: -1.9
+    yaw: -45.0
+  - name: octagon_lifebelt
+    x: 17.5
+    y: -1.9
+    yaw: 135.0
+  - name: octagon_compass
+    x: 17.5
+    y: -1.9
+    yaw: 45.0
   - name: table
     x: 17.5
-    y: -2.0
+    y: -1.9
     yaw: -90.0
   - name: acoustic_start
-    x: 13.5
-    y: 3.0
+    x: 16.5
+    y: 0.5
   - name: acoustic_end
-    x: 13.5
-    y: 3.0
+    x: 16.5
+    y: 0.5
