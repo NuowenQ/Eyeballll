@@ -27,7 +27,7 @@ map:
   - name: gate_end
     x: 4.5
     y: 1.35
-    yaw: 0.0
+    yaw: 30.0
   - name: gate_back # used for return home
     x: 5.6
     y: 2.8
@@ -74,7 +74,7 @@ map:
   - name: bin
     x: 14.0
     y: 14.9
-    yaw: 0.0
+    yaw: 30.0
   - name: bin_end
     x: 14.0
     y: 14.9
