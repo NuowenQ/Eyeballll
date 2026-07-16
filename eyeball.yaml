@@ -21,11 +21,11 @@ map:
     z: -1.0
     yaw: 0.0
   - name: gate # not used.
-    x: 3.2
+    x: 3.0
     y: 0.6
     yaw: -10.0
   - name: gate_end
-    x: 4.3
+    x: 4.5
     y: 0.6
     yaw: 0.0
   - name: gate_back # used for return home
