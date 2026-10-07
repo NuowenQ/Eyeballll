@@ -28,11 +28,27 @@ map:
     x: 4.5
     y: 0.6
     yaw: 0.0
+  # Quali transit waypoints, derived from gate_end: x = gate_end.x + 10, and
+  # y = gate_end.y +/- 1.0. Yaw matches gate_end so both hops are pure
+  # translations (legs are relative, so an equal yaw = no rotation).
+  - name: waypoint_1
+    x: 14.5
+    y: 1.6
+    yaw: 0.0
+  - name: waypoint_2
+    x: 14.5
+    y: -0.4
+    yaw: 0.0
+  # Used for return home. yaw is a DIFF against the previous waypoint, and
+  # this leg flies at FLIPPED_YAW_KEY = 180 deg -- so yaw: 0.0 means "stay
+  # flipped", i.e. arrive at gate_back facing 180 (West, back at the gate).
+  # Authored as 170.0 (the absolute heading for a zero_yaw=0 leg) it would
+  # double-count the flip and arrive facing -10 deg, looking away from the gate.
   - name: gate_back # used for return home
     x: 6.0
     y: 0.0
     z: -1.0
-    yaw: 170.0
+    yaw: 0.0
   - name: slalom_end
     x: 5.4
     y: 2.45
